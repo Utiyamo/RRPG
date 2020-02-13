@@ -44,6 +44,25 @@ class Login extends Component{
     }
 
     cadastrar(){
+        let signup = this.state.form_signup;
+
+        signup.error = "";
+        this.setState({form_signup: signup});
+
+        if(signup.confirmpassword === "")
+            signup.error = 'Necessário informar a Confirm Password.';
+        else if(signup.password === "")
+            signup.error = 'Necessário informar a Password.';
+        else if(signup.email === "")
+            signup.error = 'Necessário informar o Email.'
+        else if(signup.username === "")
+            signup.error = 'Necessário informar o Username.';
+        else if(signup.confirmpassword != signup.password)
+            signup.error = 'Confirm Password is incorrect';
+        else{
+            let url = '';
+            
+        }
     };
 
     login(){
