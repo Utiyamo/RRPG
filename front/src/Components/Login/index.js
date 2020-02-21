@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import axios from 'axios';
 import './style.css';
 
 class Login extends Component{
@@ -57,7 +58,7 @@ class Login extends Component{
             signup.error = 'Necessário informar o Email.'
         else if(signup.username === "")
             signup.error = 'Necessário informar o Username.';
-        else if(signup.confirmpassword != signup.password)
+        else if(signup.confirmpassword !== signup.password)
             signup.error = 'Confirm Password is incorrect';
         else{
             let url = '';
@@ -81,19 +82,18 @@ class Login extends Component{
             this.setState(state);
         }
         else{
-            let url = "https://localhosr:3001/users/username=" + state.form_login.username;
-            fetch(url)
-                .then((r) => r.json())
-                    .then((json) => {
-                        if(state.form_login.password === json.password){
-                            this.props.logon = true;
-    
-                        }
-                        else{
-                            state.form_login.error = 'Senha incorreta';
-                            this.setState(state);
-                        }
-                    });
+            const url = 'http://localhost:3001/login';
+            const response = axios.get(url, {
+                headers: {
+                    'Content-Type': 'application/json' 
+                },
+                params: {
+                    username: state.form_login.username,
+                    password: state.form_login.password
+                }
+            }).then(res => {
+                console.log(res);
+            });
         }
     };
 
