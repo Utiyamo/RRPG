@@ -9,7 +9,7 @@ routes = require('./src/routes');
 mongoose.Promise = global.Promise;
 mongoose.connect('mongodb+srv://DanielUtiyama:a1b2c3d4e5@dcclustersp-exlfo.gcp.mongodb.net/Web', { useNewUrlParser: true, useUnifiedTopology: true});
 
-app.use(bodyParser.urlencoded({ extendes: true}));
+app.use(bodyParser.urlencoded({ extended: true}));
 app.use(bodyParser.json());
 
 routes(app);

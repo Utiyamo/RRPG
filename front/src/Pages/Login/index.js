@@ -18,7 +18,8 @@ class Login extends Component{
                 confirmpassword: '',
                 error: ''
             },
-            typePage: 1
+            typePage: 1,
+            logon: false
             
         };
 
@@ -28,12 +29,15 @@ class Login extends Component{
         this.dadosSignUp = this.dadosSignUp.bind(this);
 
     }
+    componentDidMount(){
+        axios.defaults.baseURL = 'http://localhost:3001';
+        axios.defaults.headers.post['Content-Type']='application/json;charset=utf-8';
+        axios.defaults.headers.post['Access-Control-Allow-Origin'] = '*';
+    }
 
     dadosLogin(e){
         let formulario = this.state.form_login;
         formulario[e.target.name] = e.target.value;
-
-        console.log(formulario);
 
         this.setState({form: formulario});
     }
@@ -66,7 +70,7 @@ class Login extends Component{
         }
     };
 
-    login(){
+    async login(){
         let state = this.state;
 
         state.form_login.error = "";
@@ -82,18 +86,18 @@ class Login extends Component{
             this.setState(state);
         }
         else{
-            const url = 'http://localhost:3001/login';
-            const response = axios.get(url, {
-                headers: {
-                    'Content-Type': 'application/json' 
-                },
-                params: {
-                    username: state.form_login.username,
-                    password: state.form_login.password
-                }
-            }).then(res => {
-                console.log(res);
-            });
+            const data = {
+                username: state.form_login.username,
+                password: state.form_login.password
+            }
+
+            const resp = await axios.post('http://localhost:3001/login', data);
+
+            console.log(resp);
+
+            if(resp.status === 200){
+                this.setState({logon: true});
+            }
         }
     };
 
@@ -210,4 +214,3 @@ class Login extends Component{
 }
 
 export default Login;
-

@@ -1,38 +1,22 @@
 import React, { Component } from 'react';
-import './App.css';
+import { BrowserRouter } from 'react-router-dom';
+import { Provider } from 'react-redux';
 
-import Login from './Components/Login';
+import Routes from './routes';
+import Header from './Components/Header';
+import Store from  './Store';
 
 class App extends Component{
-  constructor(props){
-    super(props);
-    this.state = {
-      logon: false
-    };
-
-    this.SignUp = this.SignUp.bind(this);
-  }
-
-  SignUp(key){
-    let state = this.state;
-    state.logon = key;
-
-    this.setState(state);
-  }
-
   render(){
-    return(
-      <div>
-        {this.state.logon === false &&
-        <Login logon={this.SignUp} />
-        }
-        {this.state.logon === true &&
-        <div>
-        </div>
-        }
-      </div>
-    );
-  }
+     return(
+        <Provider store={Store}>
+            <BrowserRouter>
+                <Header/>
+                <Routes/>
+            </BrowserRouter>
+        </Provider>
+     );
+ }
 }
 
 export default App;
