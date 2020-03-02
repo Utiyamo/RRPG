@@ -11,7 +11,7 @@ class ListTables extends Component{
   constructor(props){
     super(props);
     this.state = {
-      itens: [],
+      itens: props.itens,
       params: useSelector(state = state.params)
     };
   }
