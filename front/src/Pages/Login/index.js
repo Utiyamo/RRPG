@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import axios from 'axios';
 import './style.css';
 
@@ -19,8 +20,8 @@ class Login extends Component{
                 error: ''
             },
             typePage: 1,
-            logon: false
-            
+            logon: false,
+            params: useSelector(state => state.params)
         };
 
         this.cadastrar = this.cadastrar.bind(this);
@@ -30,7 +31,7 @@ class Login extends Component{
 
     }
     componentDidMount(){
-        axios.defaults.baseURL = 'http://localhost:3001';
+        axios.defaults.baseURL = this.state.params.baseurl;
         axios.defaults.headers.post['Content-Type']='application/json;charset=utf-8';
         axios.defaults.headers.post['Access-Control-Allow-Origin'] = '*';
     }
@@ -48,7 +49,7 @@ class Login extends Component{
         this.setState({form: formulario});
     }
 
-    cadastrar(){
+    async cadastrar(){
         let signup = this.state.form_signup;
 
         signup.error = "";
@@ -65,7 +66,36 @@ class Login extends Component{
         else if(signup.confirmpassword !== signup.password)
             signup.error = 'Confirm Password is incorrect';
         else{
-            let url = '';
+            let data = {
+                username: this.state.form_signup.username,
+                password: this.state.form_signup.password,
+                email: this.state.form_signup.email
+            }
+
+            let url = `${this.state.params.baseurl}/login/createuser`;
+            const resp = await axios.post(url, data);
+
+            let logon;
+            if(resp.status === 200){
+                this.setState({logon: true});
+                logon = true;
+                useDispatch({
+                    type: 'ALTER_LOGON',
+                    logon
+                });
+
+                window.location.replace(`${this.state.params.baseurl}/profile`);
+            }
+            else{
+                state.form_login.error = 'Erro interno. Impossivel efetuar o login.';
+                this.setState(state);
+
+                logon = false;
+                useDispatch({
+                    type: 'ALTER_LOGON',
+                    logon
+                })
+            }
             
         }
     };
@@ -91,12 +121,29 @@ class Login extends Component{
                 password: state.form_login.password
             }
 
-            const resp = await axios.post('http://localhost:3001/login', data);
+            let url = `${this.state.params.baseurl}/login`;
+            const resp = await axios.post(url, data);
 
-            console.log(resp);
-
+            let logon;
             if(resp.status === 200){
                 this.setState({logon: true});
+                logon = true;                
+                useDispatch({
+                    type: 'ALTER_LOGON',
+                    logon
+                });
+
+                window.location.replace(`${this.state.params.baseurl}/profile`);
+            }
+            else{
+                state.form_login.error = 'Erro interno. Impossivel efetuar o login.';
+                this.setState(state);
+
+                logon = false;
+                useDispatch({
+                    type: 'ALTER_LOGON',
+                    logon
+                })
             }
         }
     };
