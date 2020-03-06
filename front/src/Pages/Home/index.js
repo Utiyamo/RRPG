@@ -4,7 +4,6 @@ import axios from 'axios';
 import './style.scss';
 
 import Slideshow from '../../Components/Slideshow';
-import Slides  from '../../Components/Slides';
 import HomeGrid from '../../Components/HomeGrid';
 
 class Home extends Component{
@@ -32,7 +31,7 @@ class Home extends Component{
         return(
             <div>
                 <div className='wrapper'>
-                    <Slideshow lista={Slides} />
+                    <Slideshow />
                 </div>
                 <HomeGrid lista={this.state.grids}/>
             </div>

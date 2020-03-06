@@ -5,6 +5,7 @@
 }
 
 .forms-section {
+	top: 50px;
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
@@ -14,13 +15,13 @@
 .section-title {
 	font-size: 32px;
 	letter-spacing: 1px;
-	color: #fff;
+	color: #000;
 }
 
 .forms {
 	display: flex;
 	align-items: flex-start;
-	margin-top: 30px;
+	margin-top: 80px;
 }
 
 .form-wrapper {

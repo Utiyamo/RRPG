@@ -6,11 +6,6 @@ export default function Social() {
    <div className='social-container'>
        <ul className='social-icons'>
             <li>
-                <a href='#'>
-                    <i className='fa fa-discord' aria-hidden='true'></i>
-                </a>
-            </li>
-            <li>
                 <a href=''>
                     <i className='fa fa-steam' aria-hidden='true'></i>
                 </a>
