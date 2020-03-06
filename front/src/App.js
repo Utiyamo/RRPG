@@ -4,6 +4,7 @@ import { Provider } from 'react-redux';
 
 import Routes from './routes';
 import Header from './Components/Header';
+import Footer from './Components/Footer';
 import Store from  './Store';
 
 class App extends Component{
@@ -13,6 +14,7 @@ class App extends Component{
             <BrowserRouter>
                 <Header/>
                 <Routes/>
+                <Footer/>
             </BrowserRouter>
         </Provider>
      );

@@ -9,7 +9,7 @@ class Header extends Component{
     constructor(props){
         super(props);
         this.state = {
-            params: useSelector(state => state.params)
+            params: ''
         };
     }
     render(){

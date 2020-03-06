@@ -8,7 +8,7 @@ export default function HomeGrid(props) {
        {
            props.lista.map((item) => {
                return(
-                   <GridItem id={item.id} img={item.img} titulo={item.titulo} autor={item.autor} />
+                   <GridItem estilocard={item.estilocard} img={item.img} titulo={item.titulo} autor={item.autor} />
                )
            })
        }

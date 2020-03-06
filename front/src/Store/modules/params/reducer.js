@@ -1,8 +1,9 @@
 const parameters = {
-    LOGON: false
+    LOGON: false,
+    baseurl: 'http://localhost:3001'
 }
 
-export default function params(state = new parameters, action){
+export default function params(state = parameters, action){
     switch(action.type){
         case 'ALTER_LOGON':
             state.LOGON = action.logon;

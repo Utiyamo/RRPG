@@ -6,7 +6,7 @@ class MenuLogin extends Component{
         super(props);
 
         this.state = {
-            params: useSelector(state => state.params)
+            params: ''
         }
 
         this.disconect = this.disconect.bind(this);
@@ -35,3 +35,5 @@ class MenuLogin extends Component{
          );
     }
 }
+
+export default MenuLogin;

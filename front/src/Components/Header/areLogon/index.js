@@ -9,7 +9,7 @@ class notLogon extends Component{
     render(){
         return(
             <nav id='navigation-notlogon'>
-                <a href='#' className='logo'>Chaos<span>Board</a>
+                <a href='#' className='logo'>Chaos<span>Board</span></a>
                 <ul className='links'>
                     <li><a href='/About'>About</a></li>
                     <Games />

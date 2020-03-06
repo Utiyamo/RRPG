@@ -21,7 +21,7 @@ class Login extends Component{
             },
             typePage: 1,
             logon: false,
-            params: useSelector(state => state.params)
+            params: ''
         };
 
         this.cadastrar = this.cadastrar.bind(this);
@@ -87,8 +87,7 @@ class Login extends Component{
                 window.location.replace(`${this.state.params.baseurl}/profile`);
             }
             else{
-                state.form_login.error = 'Erro interno. Impossivel efetuar o login.';
-                this.setState(state);
+                this.state.form_login.error = 'Erro interno. Impossivel efetuar o login.';
 
                 logon = false;
                 useDispatch({

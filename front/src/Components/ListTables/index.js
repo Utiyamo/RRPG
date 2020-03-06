@@ -12,7 +12,7 @@ class ListTables extends Component{
     super(props);
     this.state = {
       itens: props.itens,
-      params: useSelector(state = state.params)
+      params: ''
     };
   }
 

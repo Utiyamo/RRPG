@@ -3,11 +3,12 @@ import { Switch, Route } from 'react-router-dom';
 
 import Home from './Pages/Home';
 import Login from './Pages/Login';
+import Profile from './Pages/Profile';
 
 const Routes = () => {
     return(
         <Switch>
-            <Route exact path='/' component={Home} />
+            <Route path='/Profile' component={Profile} />
             <Route path='/Home' component={Home} />
             <Route path='/Login' component={Login} />
         </Switch>
