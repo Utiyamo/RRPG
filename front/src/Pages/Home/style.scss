@@ -1,12 +1,44 @@
+@import url("https://fonts.googleapis.com/css?family=Macondo&display=swap");
+
 .home{
     color: white;
     background-color: #353F4D;
 }
 
+.home-letreiro{
+  font-family: 'Macondo', sans-serif;
+  position: absolute;
+  color: #babfcc;
+  text-shadow:
+    0 0 5px #788196,
+    0 0 10px #788196,
+    0 0 20px #788196,
+    0 0 40px #5873b3,
+    0 0 80px #5873b3,
+    0 0 90px #5873b3,
+    0 0 100px #21376b,
+    0 0 150px #21376b;
+  text-align: center;
+  width: 100%;
+  font-weight: 800;
+  font-size: xx-large;
+  top: 40vh;
+  z-index: 999;
+  span{
+    display:inline-block;
+    position:relative;
+    top:-18px;
+    font-size:30pt;      
+  }
+  
+}
+
 .wrapper {
     position: relative;
+    padding: 0;
     height: 100vh;
-    width: 100%;
+    width: 101.5%;
+    left: -1%;
     overflow: hidden;
   }
 
@@ -32,7 +64,7 @@
         position: absolute;
         left: 0;
         top: -10%;
-        width: 100%;
+        width: 150%;
         height: 100%;
         animation: 11s slideshow-hero-mobile -3s infinite;
       }
@@ -40,14 +72,15 @@
       @media (min-width: 600px) {
         left: 50%;
         top: 0;
-        width: 67%;
+        width: 55%;
         height: 100%;
         transform: translateX(-50%) skewX(-10deg);
   
         .slides {
           top: 0;
-          left: -25%;
+          left: -15%;
           height: 100%;
+          width: 120%;
           animation: 11s slideshow-hero -3s infinite;
         }
       }

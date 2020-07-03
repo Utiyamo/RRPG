@@ -8,7 +8,7 @@ class areLogon extends Component{
     render(){
         return(
             <nav className='navigation-logon'>
-                <a href='#' className='logo'>Chaos<span>Board</span></a>
+                <a href='/Home' className='logo'>Chaos<span>Board</span></a>
                 <ul className='links'>
                     <li><a href='/About'>About</a></li>
                     <Games />

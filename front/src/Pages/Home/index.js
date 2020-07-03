@@ -24,7 +24,7 @@ class Home extends Component{
         axios.get(url).then(response => response.data).then((data) => {
             this.setState({grids: data});
             console.log(this.state.grids);
-        })
+        });
     }
 
     render(){
@@ -32,11 +32,20 @@ class Home extends Component{
             <div>
                 <div className='wrapper'>
                     <Slideshow />
+                    <Letreiro />
                 </div>
                 <HomeGrid lista={this.state.grids}/>
             </div>
         );
     }
+}
+
+const Letreiro = (props) => {
+    return(
+        <div className='home-letreiro'>
+            <h1>Bem vindo ao Chaos<span>Board</span></h1>
+        </div>
+    );
 }
 
 export default Home;
