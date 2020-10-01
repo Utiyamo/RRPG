@@ -4,9 +4,9 @@ const mongoose = require('mongoose');
 const NoticeCards = require('../../model/NoticeCards');
 
 class home{
-    getFeedNotice(req, res, next){
+    async getFeedNotice(req, res, next){
         const Notice = NoticeCards;
-        let select = Notice.find({isNotice: true}, (err, data) => {
+        let select = await Notice.find({isNotice: true}, (err, data) => {
             if(err){
                 res.send(err);
                 return next();
